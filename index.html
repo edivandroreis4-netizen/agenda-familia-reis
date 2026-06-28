@@ -14,6 +14,13 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+  <div id="splashScreen" class="splash-screen" aria-label="Tela de carregamento">
+    <img src="img/edi-camila.jpeg" alt="Foto de Edi e Camila" />
+    <h1>Agenda da Família Reis</h1>
+    <p>Edi & Camila</p>
+    <div class="splash-loader"></div>
+  </div>
+
   <div class="app-shell">
     <aside class="sidebar" aria-label="Menu principal">
       <div class="profile-card">
@@ -21,7 +28,7 @@
         <div>
           <h1>Agenda da Família Reis</h1>
           <p class="app-subtitle">Organização, fé e amor em cada detalhe.</p>
-          <span>v2.2</span>
+          <span>v2.3</span>
         </div>
       </div>
 
@@ -43,7 +50,7 @@
         <img src="img/edi-camila.jpeg" alt="Foto de Edi e Camila" class="mobile-hero-photo" />
         <div class="mobile-hero-text">
           <p>Agenda da Família Reis</p>
-          <strong>v2.2</strong>
+          <strong>v2.3</strong>
         </div>
       </section>
 
@@ -67,13 +74,18 @@
 
         <div class="dashboard-grid">
           <article class="panel large-panel">
-            <div class="panel-header"><h3>Tarefas de hoje</h3><button class="link-btn" data-go="tarefas">Ver todas</button></div>
+            <div class="panel-header"><h3><i class="fa-solid fa-list-check"></i> Tarefas de hoje</h3><button class="link-btn" data-go="tarefas">Ver todas</button></div>
             <div id="tarefasHoje" class="compact-list"></div>
+          </article>
+
+          <article class="panel next-task-panel">
+            <div class="panel-header"><h3><i class="fa-solid fa-bell"></i> Próximas tarefas</h3><button class="link-btn" data-go="tarefas">Abrir</button></div>
+            <div id="proximasTarefas" class="compact-list"></div>
           </article>
 
           <article class="panel verse-panel">
             <div class="verse-icon"><i class="fa-solid fa-cross"></i></div>
-            <h3>Frase Bíblica do Dia</h3>
+            <h3><i class="fa-solid fa-cross"></i> Frase Bíblica do Dia</h3>
             <blockquote id="fraseBiblica"></blockquote>
             <p id="referenciaBiblica"></p>
           </article>

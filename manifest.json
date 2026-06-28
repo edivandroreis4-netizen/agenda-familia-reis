@@ -1,7 +1,7 @@
 {
   "name": "Agenda da Família Reis",
   "short_name": "Família Reis",
-  "description": "Organização, fé e amor em cada detalhe.",
+  "description": "Agenda familiar responsiva com tarefas, compras, contas, medicamentos e frases bíblicas.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#f6faf7",

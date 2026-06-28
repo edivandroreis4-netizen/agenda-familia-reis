@@ -1,4 +1,4 @@
-const CACHE_NAME = 'agenda-familia-reis-v2-2';
+const CACHE_NAME = 'agenda-familia-reis-v23-2';
 const FILES = [
   './', './index.html', './css/style.css', './js/app.js', './manifest.json',
   './img/edi-camila.jpeg', './img/icon-192.png', './img/icon-512.png'

@@ -1,24 +1,42 @@
-# Agenda da Família Reis - v2.2 Profissional
+# Agenda da Família Reis - v2.3 Profissional
 
 Aplicação web responsiva para organização familiar de Edi e Camila.
 
-## Melhorias desta versão
+## Melhorias da versão 2.3
 
-- Sidebar desktop reduzida para melhorar o espaço do conteúdo.
-- Sombras mais suaves nos cards.
-- Subtítulo: Organização, fé e amor em cada detalhe.
+- Botão **Editar** nos itens da lista de compras.
+- Edição do item do mercado usando SweetAlert2.
+- Animação dos números do dashboard.
+- Card de **Próximas tarefas** no dashboard.
+- Card especial da **Frase Bíblica do Dia** com destaque visual.
 - Ícones padronizados com Font Awesome.
-- Animações leves de entrada, troca de telas e cards.
-- Dashboard com cards coloridos por categoria.
-- Card especial de Frase Bíblica do Dia com ícone de cruz.
-- Ícone de aplicativo em PNG 192x192 e 512x512.
-- Manifest e Service Worker para instalação como PWA.
-- Menu inferior estilo aplicativo no celular.
+- Splash Screen ao abrir o aplicativo.
+- Mantido o tema verde, menu inferior no celular e estrutura PWA.
+
+## Tecnologias usadas
+
+- HTML5
+- CSS3
+- JavaScript
+- LocalStorage
+- SweetAlert2
+- Font Awesome
+- PWA com manifest e service worker
 
 ## Como testar
 
-Abra o arquivo `index.html` com Live Server no VS Code.
+Abra o arquivo `index.html` com o Live Server no VS Code.
 
-## Observação
+## Fluxo recomendado para novas etapas
 
-Para os ícones Font Awesome aparecerem, é necessário estar conectado à internet na primeira abertura.
+Antes de novas funcionalidades, criar a branch:
+
+```bash
+git checkout -b desenvolvimento
+```
+
+
+## Ajuste v2.3.1
+
+- Rodapé visível no celular, acima do menu inferior fixo.
+- Mantida a assinatura: Desenvolvido por Edivandro Lima.
