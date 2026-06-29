@@ -28,7 +28,7 @@
         <div>
           <h1>Agenda da Família Reis</h1>
           <p class="app-subtitle">Organização, fé e amor em cada detalhe.</p>
-          <span>v2.3</span>
+          <span>v3.0</span>
         </div>
       </div>
 
@@ -50,7 +50,7 @@
         <img src="img/edi-camila.jpeg" alt="Foto de Edi e Camila" class="mobile-hero-photo" />
         <div class="mobile-hero-text">
           <p>Agenda da Família Reis</p>
-          <strong>v2.3</strong>
+          <strong>v3.0</strong>
         </div>
       </section>
 
@@ -58,7 +58,16 @@
         <div>
           <p class="eyebrow">Organização, fé e amor em cada detalhe.</p>
           <h2 id="saudacao">Bom dia, Edi e Camila!</h2>
+          <div class="profile-switch" aria-label="Selecionar perfil">
+            <button class="profile-btn active" data-profile="Todos"><i class="fa-solid fa-users"></i> Todos</button>
+            <button class="profile-btn" data-profile="Edi"><i class="fa-solid fa-user-tie"></i> Edi</button>
+            <button class="profile-btn" data-profile="Camila"><i class="fa-solid fa-user"></i> Camila</button>
+          </div>
           <span id="dataAtual"></span>
+        </div>
+        <div class="topbar-actions">
+          <button id="btnNotifications" class="icon-action" title="Ativar notificações"><i class="fa-solid fa-bell"></i></button>
+          <button id="btnTheme" class="icon-action" title="Alternar modo escuro"><i class="fa-solid fa-moon"></i></button>
         </div>
       </header>
 
@@ -70,6 +79,8 @@
           <article class="stat-card shopping-card"><i class="fa-solid fa-cart-shopping"></i><strong id="totalCompras">0</strong><span>Itens de compras</span></article>
           <article class="stat-card danger"><i class="fa-solid fa-file-invoice-dollar"></i><strong id="totalContas">0</strong><span>Contas cadastradas</span></article>
           <article class="stat-card meds-card"><i class="fa-solid fa-capsules"></i><strong id="totalMedicamentos">0</strong><span>Medicamentos</span></article>
+          <article class="stat-card money-card"><i class="fa-solid fa-sack-dollar"></i><strong id="totalValorContas">R$ 0</strong><span>Total das contas</span></article>
+          <article class="stat-card estimate-card"><i class="fa-solid fa-basket-shopping"></i><strong id="valorEstimadoCompras">R$ 0</strong><span>Estimativa compras</span></article>
         </div>
 
         <div class="dashboard-grid">
@@ -88,6 +99,7 @@
             <h3><i class="fa-solid fa-cross"></i> Frase Bíblica do Dia</h3>
             <blockquote id="fraseBiblica"></blockquote>
             <p id="referenciaBiblica"></p>
+            <button id="novaFraseBtn" class="link-btn verse-button" type="button"><i class="fa-solid fa-rotate"></i> Nova frase</button>
           </article>
 
           <article class="panel">
@@ -99,19 +111,31 @@
             <div class="panel-header"><h3>Medicamentos</h3><button class="link-btn" data-go="medicamentos">Abrir</button></div>
             <div id="medsResumo" class="compact-list"></div>
           </article>
+
+          <article class="panel alert-panel">
+            <div class="panel-header"><h3><i class="fa-solid fa-triangle-exclamation"></i> Alertas</h3></div>
+            <div id="alertasResumo" class="compact-list"></div>
+          </article>
+
+          <article class="panel calendar-panel">
+            <div class="panel-header"><h3><i class="fa-solid fa-calendar-days"></i> Calendário mensal</h3></div>
+            <div id="calendarioMensal" class="calendar-grid"></div>
+          </article>
         </div>
       </section>
 
       <section id="tarefas" class="page">
         <div class="page-title"><h2>Tarefas</h2><p>Cadastre, conclua e acompanhe a rotina da semana.</p></div>
-        <form id="formTarefa" class="form-card">
+        <form id="formTarefa" class="form-card task-form">
           <input id="nomeTarefa" type="text" placeholder="O que precisa ser feito?" required />
+          <label class="field-label calendar-field"><span><i class="fa-solid fa-calendar-days"></i> Data da tarefa</span><input id="dataTarefa" type="date" required /></label>
           <select id="diaTarefa" required>
             <option value="Hoje">Hoje</option><option>Segunda-feira</option><option>Terça-feira</option><option>Quarta-feira</option><option>Quinta-feira</option><option>Sexta-feira</option><option>Sábado</option><option>Domingo</option>
           </select>
           <input id="horaTarefa" type="time" required />
           <select id="categoriaTarefa" required><option>Casa</option><option>Família</option><option>Igreja</option><option>Saúde</option><option>Trabalho</option><option>Outros</option></select>
           <select id="prioridadeTarefa" required><option>Baixa</option><option>Média</option><option>Alta</option></select>
+          <select id="responsavelTarefa" required><option>Todos</option><option>Edi</option><option>Camila</option></select>
           <button type="submit">Adicionar tarefa</button>
         </form>
         <div id="listaTarefas" class="list-area"></div>
@@ -119,10 +143,13 @@
 
       <section id="compras" class="page">
         <div class="page-title"><h2>Lista de Compras</h2><p>Organize os itens do mercado.</p></div>
-        <form id="formCompra" class="form-card compact-form">
+        <form id="formCompra" class="form-card shopping-form">
           <input id="nomeCompra" type="text" placeholder="Ex: Arroz, leite, café" required />
+          <input id="quantidadeCompra" type="number" min="1" step="1" placeholder="Qtd." value="1" required />
+          <input id="valorCompra" type="number" min="0" step="0.01" placeholder="Valor estimado" />
           <button type="submit">Adicionar item</button>
         </form>
+        <div class="summary-strip"><strong>Valor estimado da lista:</strong> <span id="valorComprasPagina">R$ 0,00</span></div>
         <div id="listaCompras" class="list-area"></div>
       </section>
 
@@ -131,9 +158,11 @@
         <form id="formConta" class="form-card compact-form three-cols">
           <input id="nomeConta" type="text" placeholder="Nome da conta" required />
           <input id="valorConta" type="number" step="0.01" placeholder="Valor" required />
-          <input id="vencimentoConta" type="date" required />
+          <label class="field-label calendar-field"><span><i class="fa-solid fa-calendar-days"></i> Vencimento</span><input id="vencimentoConta" type="date" required /></label>
           <button type="submit">Adicionar conta</button>
         </form>
+        <div class="summary-strip"><strong>Total digitado em contas:</strong> <span id="totalContasPagina">R$ 0,00</span></div>
+        <div id="resumoContasDetalhado" class="finance-summary" aria-label="Resumo das contas"></div>
         <div id="listaContas" class="list-area"></div>
       </section>
 
