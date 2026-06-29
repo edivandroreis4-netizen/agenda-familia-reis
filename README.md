@@ -1,19 +1,25 @@
-# Agenda da Família Reis - v2.3 Profissional
+# Agenda da Família Reis - v3.0 Profissional
 
 Aplicação web responsiva para organização familiar de Edi e Camila.
 
-## Melhorias da versão 2.3
+## Novidades da versão 3.0
 
-- Botão **Editar** nos itens da lista de compras.
-- Edição do item do mercado usando SweetAlert2.
-- Animação dos números do dashboard.
-- Card de **Próximas tarefas** no dashboard.
-- Card especial da **Frase Bíblica do Dia** com destaque visual.
-- Ícones padronizados com Font Awesome.
-- Splash Screen ao abrir o aplicativo.
-- Mantido o tema verde, menu inferior no celular e estrutura PWA.
+- Modal centralizado para editar tarefas.
+- Edição completa: nome, data, hora, categoria, prioridade e responsável.
+- Perfis individuais: Todos, Edi e Camila.
+- Calendário mensal interativo: clique no dia para ver as tarefas daquele dia.
+- Dashboard com números animados.
+- Cards com espaçamento interno refinado.
+- Frase bíblica com transição suave.
+- Contas com indicadores visuais: pagas, próximas e vencidas.
+- Modo escuro mantido.
+- PWA com ícone de aplicativo.
 
-## Tecnologias usadas
+## Como testar
+
+Abra `index.html` com Live Server no VS Code.
+
+## Tecnologias
 
 - HTML5
 - CSS3
@@ -21,22 +27,8 @@ Aplicação web responsiva para organização familiar de Edi e Camila.
 - LocalStorage
 - SweetAlert2
 - Font Awesome
-- PWA com manifest e service worker
+- PWA
 
-## Como testar
+## Desenvolvido por
 
-Abra o arquivo `index.html` com o Live Server no VS Code.
-
-## Fluxo recomendado para novas etapas
-
-Antes de novas funcionalidades, criar a branch:
-
-```bash
-git checkout -b desenvolvimento
-```
-
-
-## Ajuste v2.3.1
-
-- Rodapé visível no celular, acima do menu inferior fixo.
-- Mantida a assinatura: Desenvolvido por Edivandro Lima.
+Edivandro Lima
